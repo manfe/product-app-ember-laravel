@@ -1,0 +1,9 @@
+<h1>{{title}}</h1>
+
+<ul>
+  {{#each categories as |category|}}
+    <li {{action "showCategory" category}}>{{category}}</li>
+  {{/each}}
+</ul>
+
+{{yield}}
