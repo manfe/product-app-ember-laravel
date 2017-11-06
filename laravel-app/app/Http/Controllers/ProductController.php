@@ -8,6 +8,6 @@ use App\Models\Product as Product;
 class ProductController extends Controller
 {
     public function index() {
-        return Product::all()->toJson();
+        return response()->json(Product::all());
     }
 }
