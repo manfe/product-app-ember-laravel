@@ -1,0 +1,7 @@
+Listing all products:
+
+{{#each model as |product|}}
+  <p>
+    {{ product.name }} - {{ product.value }} - {{ product.createdAt }}
+  </p>
+{{/each}}

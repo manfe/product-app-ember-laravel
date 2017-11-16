@@ -7,24 +7,26 @@ use App\Models\Product as Product;
 
 use League\Fractal\Manager as Manager;
 use League\Fractal\Resource\Collection;
+use League\Fractal\Serializer\JsonApiSerializer;
 
-use App\Transformers\ProductTransformer as ProductTransformer;
+use App\Transformers\JsonApiProductTransformer as JsonApiProductTransformer;
 
 class ProductController extends Controller
 {
     private $fractal;
-    private $productTransformer;
+    private $jsonApiProductTransformer;
 
-    function __construct(Manager $fractal, ProductTransformer $productTransformer)
+    function __construct(Manager $fractal, JsonApiProductTransformer $jsonApiProductTransformer)
     {
         $this->fractal = $fractal;
-        $this->productTransformer = $productTransformer;
+        $this->fractal->setSerializer(new JsonApiSerializer());
+        $this->jsonApiProductTransformer = $jsonApiProductTransformer;
     }
 
     public function index(Request $request)
     {
         $products = Product::all(); // Get users from DB
-        $products = new Collection($products, $this->productTransformer); // Create a resource collection transformer
+        $products = new Collection($products, $this->jsonApiProductTransformer, 'product'); // Create a resource collection transformer
         $products = $this->fractal->createData($products); // Transform data
 
         return $products->toArray(); // Get transformed array of data
