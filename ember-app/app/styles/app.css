@@ -1,0 +1,68 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+body.ember-application {
+  padding-top: 3.5rem;
+}
+
+/*
+ * Typography
+ */
+
+.ember-application h1 {
+  padding-bottom: 9px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Sidebar
+ */
+
+ .ember-application .sidebar {
+  position: fixed;
+  top: 51px;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  border-right: 1px solid #eee;
+}
+
+.ember-application .sidebar .nav {
+  margin-bottom: 20px;
+}
+
+.ember-application .sidebar .nav-item {
+  width: 100%;
+}
+
+.ember-application .sidebar .nav-item + .nav-item {
+  margin-left: 0;
+}
+
+.ember-application .sidebar .nav-link {
+  border-radius: 0;
+}
+
+.ember-application main {
+  padding-left: 40px;
+}
+
+/*
+ * Dashboard
+ */
+
+/* Placeholders */
+.ember-application .placeholders {
+  padding-bottom: 3rem;
+}
+
+.ember-application .placeholder img {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
